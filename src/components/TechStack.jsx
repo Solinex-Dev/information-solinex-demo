@@ -33,7 +33,7 @@ const TechStack = () => {
           {techItems.map((tech, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 group"
+              className="bg-white rounded-3xl p-6 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 group"
             >
               <div className="text-center">
                 <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">

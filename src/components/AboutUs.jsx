@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from '../assets/logo-solinex-512x512.png'
 
 const AboutUs = () => {
   return (
@@ -11,8 +12,13 @@ const AboutUs = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
+          <div className="bg-white rounded-3xl shadow-lg p-8 md:p-12">
             <div className="text-center mb-8">
+              <img 
+                src={logo} 
+                alt="Solinex Logo" 
+                className="h-16 w-16 mx-auto mb-4"
+              />
               <h3 className="text-3xl font-bold text-solinex-teal mb-4">
                 Solinex
               </h3>

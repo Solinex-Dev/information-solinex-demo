@@ -62,14 +62,14 @@ const Showcase = () => {
 
         <div className="relative">
           {/* Carousel Container */}
-          <div className="overflow-hidden rounded-lg">
+          <div className="overflow-hidden rounded-3xl">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {projects.map((project) => (
                 <div key={project.id} className="w-full flex-shrink-0">
-                  <div className="bg-gradient-to-br from-solinex-blue/10 to-solinex-green/10 rounded-lg p-8 mx-4">
+                  <div className="bg-gradient-to-br from-solinex-blue/10 to-solinex-green/10 rounded-3xl p-8 mx-4">
                     <div className="text-center">
                       <div className="text-6xl mb-6">{project.image}</div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">

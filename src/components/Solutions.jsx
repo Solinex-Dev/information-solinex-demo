@@ -38,7 +38,7 @@ const Solutions = () => {
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-8 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group"
+              className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 hover:shadow-lg transition-all duration-300 transform hover:scale-105 group"
             >
               <div className="text-center mb-6">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -65,7 +65,7 @@ const Solutions = () => {
               </div>
 
               <div className="mt-6">
-                <button className="w-full bg-solinex-blue hover:bg-solinex-teal text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                <button className="w-full bg-solinex-blue hover:bg-solinex-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300">
                   Learn More
                 </button>
               </div>
@@ -75,14 +75,14 @@ const Solutions = () => {
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-solinex-blue to-solinex-green rounded-lg p-8 text-white">
+          <div className="bg-gradient-to-r from-solinex-blue to-solinex-green rounded-3xl p-8 text-white">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Ready to Get Started?
             </h3>
             <p className="text-lg mb-6 opacity-90">
               Let's discuss how we can help transform your business with our technology solutions.
             </p>
-            <button className="bg-white text-solinex-blue hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+            <button className="bg-white text-solinex-blue hover:bg-gray-100 font-semibold py-3 px-8 rounded-full transition-all duration-300">
               Contact Us Today
             </button>
           </div>

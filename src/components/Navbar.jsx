@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import logo from '../assets/logo-solinex-512x512.png'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,11 +21,16 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 flex items-center space-x-3">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-2xl font-bold text-solinex-teal hover:text-solinex-blue transition-colors duration-300"
+              className="text-2xl flex gap-2 items-center font-bold text-solinex-teal hover:text-solinex-blue transition-colors duration-300"
             >
+              <img
+                src={logo}
+                alt="Solinex Logo"
+                className="h-10 w-10 "
+              />
               Solinex
             </button>
           </div>
