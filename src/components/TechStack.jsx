@@ -1,20 +1,32 @@
 import React from 'react'
 
+// Import icon images
+import reactIcon from '../assets/icons/icon-react.png'
+import nodejsIcon from '../assets/icons/icon-nodejs.png'
+import javascriptIcon from '../assets/icons/icon-javascript.png'
+import typescriptIcon from '../assets/icons/icon-typescript.png'
+import mongodbIcon from '../assets/icons/icon-mongodb.png'
+import postgresqlIcon from '../assets/icons/icon-postgresql.png'
+import dockerIcon from '../assets/icons/icon-docker.png'
+import awsIcon from '../assets/icons/icon-aws.png'
+import gitIcon from '../assets/icons/icon-git.png'
+import tailwindIcon from '../assets/icons/icon-tailwind-css.png'
+import viteIcon from '../assets/icons/icon-vite.png'
+
 const TechStack = () => {
-  // Placeholder tech stack data
+  // Tech stack data with actual icon files
   const techItems = [
-    { name: 'React', icon: '⚛️' },
-    { name: 'Node.js', icon: '🟢' },
-    { name: 'Python', icon: '🐍' },
-    { name: 'JavaScript', icon: '🟨' },
-    { name: 'TypeScript', icon: '🔷' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'PostgreSQL', icon: '🐘' },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'AWS', icon: '☁️' },
-    { name: 'Git', icon: '📦' },
-    { name: 'TailwindCSS', icon: '🎨' },
-    { name: 'Vite', icon: '⚡' }
+    { name: 'React', icon: reactIcon },
+    { name: 'Node.js', icon: nodejsIcon },
+    { name: 'JavaScript', icon: javascriptIcon },
+    { name: 'TypeScript', icon: typescriptIcon },
+    { name: 'MongoDB', icon: mongodbIcon },
+    { name: 'PostgreSQL', icon: postgresqlIcon },
+    { name: 'Docker', icon: dockerIcon },
+    { name: 'AWS', icon: awsIcon },
+    { name: 'Git', icon: gitIcon },
+    { name: 'TailwindCSS', icon: tailwindIcon },
+    { name: 'Vite', icon: viteIcon }
   ]
 
   return (
@@ -33,11 +45,15 @@ const TechStack = () => {
           {techItems.map((tech, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl p-6 shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 group"
+              className="p-6 transition-all duration-300 transform hover:scale-105 group"
             >
               <div className="text-center">
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {tech.icon}
+                <div className="mb-3 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                  <img 
+                    src={tech.icon} 
+                    alt={`${tech.name} icon`}
+                    className="w-28 h-28 object-contain"
+                  />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 group-hover:text-solinex-blue transition-colors duration-300">
                   {tech.name}

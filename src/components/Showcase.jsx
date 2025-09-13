@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 const Showcase = () => {
-  const [currentSlide, setCurrentSlide] = useState(0)
-
   const projects = [
     {
       id: 1,
@@ -36,20 +41,8 @@ const Showcase = () => {
     }
   ]
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % projects.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length)
-  }
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index)
-  }
-
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -61,66 +54,59 @@ const Showcase = () => {
         </div>
 
         <div className="relative">
-          {/* Carousel Container */}
-          <div className="overflow-hidden rounded-3xl">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {projects.map((project) => (
-                <div key={project.id} className="w-full flex-shrink-0">
-                  <div className="bg-gradient-to-br from-solinex-blue/10 to-solinex-green/10 rounded-3xl p-8 mx-4">
-                    <div className="text-center">
-                      <div className="text-6xl mb-6">{project.image}</div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        {project.name}
-                      </h3>
-                      <p className="text-lg text-gray-600 max-w-md mx-auto">
-                        {project.description}
-                      </p>
-                    </div>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
+            pagination={{
+              clickable: true,
+              el: '.swiper-pagination-custom',
+              bulletClass: 'swiper-pagination-bullet-custom',
+              bulletActiveClass: 'swiper-pagination-bullet-active-custom',
+            }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="rounded-3xl overflow-visible"
+          >
+            {projects.map((project) => (
+              <SwiperSlide key={project.id}>
+                <div className="bg-gradient-to-br from-solinex-blue/10 to-solinex-green/10 rounded-3xl p-20 mx-4 h-full">
+                  <div className="text-center h-full flex flex-col justify-center">
+                    <div className="text-6xl mb-6">{project.image}</div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      {project.name}
+                    </h3>
+                    <p className="text-lg text-gray-600 max-w-md mx-auto">
+                      {project.description}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-solinex-teal hover:text-solinex-blue p-3 rounded-full shadow-lg transition-all duration-300"
-            aria-label="Previous project"
-          >
+          {/* Custom Navigation Arrows */}
+          <button className="swiper-button-prev-custom absolute -left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-solinex-teal hover:text-solinex-blue p-3 rounded-full shadow-lg transition-all duration-300 z-10">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-solinex-teal hover:text-solinex-blue p-3 rounded-full shadow-lg transition-all duration-300"
-            aria-label="Next project"
-          >
+          <button className="swiper-button-next-custom absolute -right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-solinex-teal hover:text-solinex-blue p-3 rounded-full shadow-lg transition-all duration-300 z-10">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
-        </div>
 
-        {/* Dots Indicator */}
-        <div className="flex justify-center mt-8 space-x-2">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? 'bg-solinex-blue scale-125'
-                  : 'bg-gray-300 hover:bg-solinex-green'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+          {/* Custom Pagination */}
+          <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2"></div>
         </div>
       </div>
     </section>

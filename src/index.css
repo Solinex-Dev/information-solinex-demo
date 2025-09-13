@@ -149,3 +149,34 @@ body {
   max-height: 60vh;
   scrollbar-gutter: stable;
 }
+
+/* Custom Swiper styles */
+.swiper-pagination-bullet-custom {
+  width: 12px;
+  height: 12px;
+  background: #d1d5db;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.swiper-pagination-bullet-active-custom {
+  background: var(--solinex-blue);
+  transform: scale(1.25);
+}
+
+.swiper-pagination-bullet-custom:hover {
+  background: var(--solinex-green);
+  transform: scale(1.1);
+}
+
+/* Hide default Swiper navigation and pagination */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+
+.swiper-pagination {
+  display: none;
+}
