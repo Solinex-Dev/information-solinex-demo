@@ -27,3 +27,6 @@ dist-ssr
 PROJECT_PRD.md
 PROJECT_MEMORY.md
 package-lock.json
+.scannerwork/.sonar_lock
+.scannerwork/report-task.txt
+sonar-project.properties
