@@ -1,13 +1,16 @@
 import React from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 import logo from '../assets/logo-solinex-512x512.png'
 
 const AboutUs = () => {
+  const { t } = useLanguage()
+  
   return (
     <section id="about" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            About us
+            {t('about.title')}
           </h2>
         </div>
 
@@ -27,32 +30,32 @@ const AboutUs = () => {
             
             <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
               <p className="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                {t('about.description1')}
               </p>
               
               <p className="mb-6">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {t('about.description2')}
               </p>
               
               <p className="mb-6">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                {t('about.description3')}
               </p>
 
               <div className="grid md:grid-cols-3 gap-8 mt-12">
                 <div className="text-center">
                   <div className="text-4xl mb-4">🚀</div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Innovation</h4>
-                  <p className="text-gray-600">Cutting-edge solutions for modern challenges</p>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2">{t('about.values.innovation.title')}</h4>
+                  <p className="text-gray-600">{t('about.values.innovation.description')}</p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl mb-4">🤝</div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Collaboration</h4>
-                  <p className="text-gray-600">Working together to achieve your goals</p>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2">{t('about.values.collaboration.title')}</h4>
+                  <p className="text-gray-600">{t('about.values.collaboration.description')}</p>
                 </div>
                 <div className="text-center">
                   <div className="text-4xl mb-4">⭐</div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Excellence</h4>
-                  <p className="text-gray-600">Delivering quality results every time</p>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-2">{t('about.values.excellence.title')}</h4>
+                  <p className="text-gray-600">{t('about.values.excellence.description')}</p>
                 </div>
               </div>
             </div>

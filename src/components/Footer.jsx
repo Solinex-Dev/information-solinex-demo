@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Footer = () => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
   const [isTermsOpen, setIsTermsOpen] = useState(false)
   const [isPrivacyClosing, setIsPrivacyClosing] = useState(false)
   const [isTermsClosing, setIsTermsClosing] = useState(false)
+  const { t } = useLanguage()
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -109,47 +111,41 @@ const Footer = () => {
   const PrivacyPolicyContent = () => (
     <div className="prose prose-gray max-w-none">
       <p className="text-sm text-gray-500 mb-6">
-        <strong>Effective Date:</strong> January 1, 2025<br />
-        <strong>Last Updated:</strong> January 1, 2025
+        <strong>{t('modals.privacyPolicy.effectiveDate')}</strong> January 1, 2025<br />
+        <strong>{t('modals.privacyPolicy.lastUpdated')}</strong> January 1, 2025
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">1. Information We Collect</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.privacyPolicy.sections.informationWeCollect.title')}</h4>
       <p className="text-gray-700 mb-4">
-        We collect information you provide directly to us, such as when you create an account, 
-        contact us, or use our services. This may include your name, email address, phone number, 
-        and any other information you choose to provide.
+        {t('modals.privacyPolicy.sections.informationWeCollect.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">2. How We Use Your Information</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.privacyPolicy.sections.howWeUseInformation.title')}</h4>
       <p className="text-gray-700 mb-4">
-        We use the information we collect to provide, maintain, and improve our services, 
-        communicate with you, and ensure the security of our platform.
+        {t('modals.privacyPolicy.sections.howWeUseInformation.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">3. Information Sharing</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.privacyPolicy.sections.informationSharing.title')}</h4>
       <p className="text-gray-700 mb-4">
-        We do not sell, trade, or otherwise transfer your personal information to third parties 
-        without your consent, except as described in this privacy policy.
+        {t('modals.privacyPolicy.sections.informationSharing.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">4. Data Security</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.privacyPolicy.sections.dataSecurity.title')}</h4>
       <p className="text-gray-700 mb-4">
-        We implement appropriate security measures to protect your personal information against 
-        unauthorized access, alteration, disclosure, or destruction.
+        {t('modals.privacyPolicy.sections.dataSecurity.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">5. Your Rights</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.privacyPolicy.sections.yourRights.title')}</h4>
       <p className="text-gray-700 mb-4">
-        You have the right to access, update, or delete your personal information. You may also 
-        opt out of certain communications from us.
+        {t('modals.privacyPolicy.sections.yourRights.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">6. Contact Us</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.privacyPolicy.sections.contactUs.title')}</h4>
       <p className="text-gray-700">
-        If you have any questions about this Privacy Policy, please contact us at:
+        {t('modals.privacyPolicy.sections.contactUs.content')}
         <br />
-        <strong>Email:</strong> privacy@solinex.com<br />
-        <strong>Phone:</strong> +1 (555) 123-4567
+        <strong>{t('modals.privacyPolicy.sections.contactUs.email')}</strong> privacy@solinex.com<br />
+        <strong>{t('modals.privacyPolicy.sections.contactUs.phone')}</strong> +1 (555) 123-4567
       </p>
     </div>
   )
@@ -158,60 +154,51 @@ const Footer = () => {
   const TermsOfServiceContent = () => (
     <div className="prose prose-gray max-w-none">
       <p className="text-sm text-gray-500 mb-6">
-        <strong>Effective Date:</strong> January 1, 2025<br />
-        <strong>Last Updated:</strong> January 1, 2025
+        <strong>{t('modals.termsOfService.effectiveDate')}</strong> January 1, 2025<br />
+        <strong>{t('modals.termsOfService.lastUpdated')}</strong> January 1, 2025
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">1. Acceptance of Terms</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.acceptanceOfTerms.title')}</h4>
       <p className="text-gray-700 mb-4">
-        By accessing and using Solinex's services, you accept and agree to be bound by the 
-        terms and provision of this agreement.
+        {t('modals.termsOfService.sections.acceptanceOfTerms.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">2. Use License</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.useLicense.title')}</h4>
       <p className="text-gray-700 mb-4">
-        Permission is granted to temporarily download one copy of Solinex's materials for 
-        personal, non-commercial transitory viewing only. This is the grant of a license, 
-        not a transfer of title.
+        {t('modals.termsOfService.sections.useLicense.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">3. Service Availability</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.serviceAvailability.title')}</h4>
       <p className="text-gray-700 mb-4">
-        We strive to maintain the availability of our services, but we do not guarantee 
-        uninterrupted access. We reserve the right to modify or discontinue services at any time.
+        {t('modals.termsOfService.sections.serviceAvailability.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">4. User Responsibilities</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.userResponsibilities.title')}</h4>
       <p className="text-gray-700 mb-4">
-        Users are responsible for maintaining the confidentiality of their account information 
-        and for all activities that occur under their account.
+        {t('modals.termsOfService.sections.userResponsibilities.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">5. Intellectual Property</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.intellectualProperty.title')}</h4>
       <p className="text-gray-700 mb-4">
-        All content, trademarks, and other intellectual property on our website are owned by 
-        Solinex or our licensors and are protected by copyright and other intellectual property laws.
+        {t('modals.termsOfService.sections.intellectualProperty.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">6. Limitation of Liability</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.limitationOfLiability.title')}</h4>
       <p className="text-gray-700 mb-4">
-        In no event shall Solinex, nor its directors, employees, partners, agents, suppliers, 
-        or affiliates, be liable for any indirect, incidental, special, consequential, or punitive 
-        damages arising out of your use of our services.
+        {t('modals.termsOfService.sections.limitationOfLiability.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">7. Governing Law</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.governingLaw.title')}</h4>
       <p className="text-gray-700 mb-4">
-        These terms shall be governed by and construed in accordance with the laws of the 
-        jurisdiction in which Solinex operates, without regard to its conflict of law provisions.
+        {t('modals.termsOfService.sections.governingLaw.content')}
       </p>
 
-      <h4 className="text-lg font-semibold text-gray-900 mb-3">8. Contact Information</h4>
+      <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('modals.termsOfService.sections.contactInformation.title')}</h4>
       <p className="text-gray-700">
-        If you have any questions about these Terms of Service, please contact us at:
+        {t('modals.termsOfService.sections.contactInformation.content')}
         <br />
-        <strong>Email:</strong> legal@solinex.com<br />
-        <strong>Phone:</strong> +1 (555) 123-4567
+        <strong>{t('modals.termsOfService.sections.contactInformation.email')}</strong> legal@solinex.com<br />
+        <strong>{t('modals.termsOfService.sections.contactInformation.phone')}</strong> +1 (555) 123-4567
       </p>
     </div>
   )
@@ -224,41 +211,41 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-white">Solinex</h3>
             <p className="text-solinex-green/80 text-lg">
-              Technology Solutions for Tomorrow
+              {t('footer.tagline')}
             </p>
             <p className="text-sm text-gray-300 max-w-sm">
-              We deliver innovative technology solutions that drive business growth and digital transformation.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Middle: Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Quick Links</h4>
+            <h4 className="text-lg font-semibold">{t('footer.quickLinks')}</h4>
             <div className="space-y-2">
               <button
                 onClick={() => scrollToSection('about')}
                 className="block text-solinex-green/80 hover:text-white transition-colors duration-300 text-left"
               >
-                About us
+                {t('nav.about')}
               </button>
               <button
                 onClick={() => scrollToSection('solutions')}
                 className="block text-solinex-green/80 hover:text-white transition-colors duration-300 text-left"
               >
-                Solutions
+                {t('nav.solutions')}
               </button>
               <button
                 onClick={() => scrollToSection('home')}
                 className="block text-solinex-green/80 hover:text-white transition-colors duration-300 text-left"
               >
-                Home
+                {t('nav.home')}
               </button>
             </div>
           </div>
 
           {/* Right: Contact info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Contact Info</h4>
+            <h4 className="text-lg font-semibold">{t('footer.contactInfo')}</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <svg className="w-5 h-5 text-solinex-green" fill="currentColor" viewBox="0 0 20 20">
@@ -287,20 +274,20 @@ const Footer = () => {
         <div className="border-t border-solinex-green/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-solinex-green/80 text-sm">
-              © 2025 Solinex. All rights reserved.
+              {t('footer.copyright')}
             </p>
             <div className="flex space-x-6">
               <button 
                 onClick={openPrivacy}
                 className="text-solinex-green/80 hover:text-white transition-all duration-300 cursor-pointer px-2 py-1 rounded"
               >
-                Privacy Policy
+                {t('footer.privacyPolicy')}
               </button>
               <button 
                 onClick={openTerms}
                 className="text-solinex-green/80 hover:text-white transition-all duration-300 cursor-pointer px-2 py-1 rounded"
               >
-                Terms of Service
+                {t('footer.termsOfService')}
               </button>
             </div>
           </div>
@@ -311,7 +298,7 @@ const Footer = () => {
       <Modal 
         isOpen={isPrivacyOpen || isPrivacyClosing} 
         onClose={closePrivacy} 
-        title="Privacy Policy"
+        title={t('footer.privacyPolicy')}
         isClosing={isPrivacyClosing}
       >
         <PrivacyPolicyContent />
@@ -319,7 +306,7 @@ const Footer = () => {
       <Modal 
         isOpen={isTermsOpen || isTermsClosing} 
         onClose={closeTerms} 
-        title="Terms of Service"
+        title={t('footer.termsOfService')}
         isClosing={isTermsClosing}
       >
         <TermsOfServiceContent />
