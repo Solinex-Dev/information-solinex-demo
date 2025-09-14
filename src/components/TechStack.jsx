@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 // Import icon images
 import reactIcon from '../assets/icons/icon-react.png'
@@ -14,6 +15,8 @@ import tailwindIcon from '../assets/icons/icon-tailwind-css.png'
 import viteIcon from '../assets/icons/icon-vite.png'
 
 const TechStack = () => {
+  const { t } = useLanguage()
+  
   // Tech stack data with actual icon files
   const techItems = [
     { name: 'React', icon: reactIcon },
@@ -34,10 +37,10 @@ const TechStack = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Tech Stack
+            {t('techStack.title', 'Tech Stack')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We use cutting-edge technologies to build modern, scalable solutions
+            {t('techStack.subtitle', 'We use cutting-edge technologies to build modern, scalable solutions')}
           </p>
         </div>
 

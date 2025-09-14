@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
@@ -8,6 +9,8 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const Showcase = () => {
+  const { t } = useLanguage()
+  
   const projects = [
     {
       id: 1,
@@ -46,10 +49,10 @@ const Showcase = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Showcase
+            {t('showcase.title', 'Showcase')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our portfolio of successful projects and solutions
+            {t('showcase.subtitle', 'Explore our portfolio of successful projects and solutions')}
           </p>
         </div>
 

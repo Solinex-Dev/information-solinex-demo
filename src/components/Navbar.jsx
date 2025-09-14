@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
+import LanguageSwitcher from './LanguageSwitcher'
 import logo from '../assets/logo-solinex-512x512.png'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -42,21 +45,26 @@ const Navbar = () => {
                 onClick={() => scrollToSection('home')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-medium transition-colors duration-300"
               >
-                Home
+                {t('nav.home')}
               </button>
               <button
                 onClick={() => scrollToSection('about')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-medium transition-colors duration-300"
               >
-                About us
+                {t('nav.about')}
               </button>
               <button
                 onClick={() => scrollToSection('solutions')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-medium transition-colors duration-300"
               >
-                Solutions
+                {t('nav.solutions')}
               </button>
             </div>
+          </div>
+
+          {/* Language Switcher - Desktop */}
+          <div className="hidden md:block">
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile menu button */}
@@ -99,20 +107,25 @@ const Navbar = () => {
             onClick={() => scrollToSection('home')}
             className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
-            Home
+            {t('nav.home')}
           </button>
           <button
             onClick={() => scrollToSection('about')}
             className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
-            About us
+            {t('nav.about')}
           </button>
           <button
             onClick={() => scrollToSection('solutions')}
             className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
-            Solutions
+            {t('nav.solutions')}
           </button>
+          
+          {/* Language Switcher - Mobile */}
+          <div className="px-3 py-2">
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </nav>
