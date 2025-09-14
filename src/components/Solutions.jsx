@@ -56,22 +56,22 @@ const Solutions = () => {
                 {solution.description}
               </p>
 
-              <div className="space-y-2">
+              <div className="flex flex-wrap gap-2">
                 {solution.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center text-sm text-gray-700">
-                    <svg className="w-4 h-4 text-solinex-green mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
+                  <span 
+                    key={featureIndex}
+                    className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-50 text-solinex-green border border-green-200 hover:bg-green-100 transition-colors duration-200"
+                  >
                     {feature}
-                  </div>
+                  </span>
                 ))}
               </div>
 
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <button className="w-full bg-solinex-blue hover:bg-solinex-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300">
                   {t('solutions.learnMore')}
                 </button>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
@@ -85,9 +85,9 @@ const Solutions = () => {
             <p className="text-lg mb-6 opacity-90">
               {t('solutions.cta.description')}
             </p>
-            <button className="bg-white text-solinex-blue hover:bg-gray-100 font-semibold py-3 px-8 rounded-full transition-all duration-300">
+            {/* <button className="bg-white text-solinex-blue hover:bg-gray-100 font-semibold py-3 px-8 rounded-full transition-all duration-300">
               {t('solutions.cta.button')}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

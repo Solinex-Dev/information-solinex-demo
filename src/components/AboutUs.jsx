@@ -32,14 +32,6 @@ const AboutUs = () => {
               <p className="mb-6">
                 {t('about.description1')}
               </p>
-              
-              <p className="mb-6">
-                {t('about.description2')}
-              </p>
-              
-              <p className="mb-6">
-                {t('about.description3')}
-              </p>
 
               <div className="grid md:grid-cols-3 gap-8 mt-12">
                 <div className="text-center">

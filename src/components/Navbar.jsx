@@ -43,19 +43,19 @@ const Navbar = () => {
             <div className="ml-10 flex items-baseline space-x-8">
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-medium transition-colors duration-300"
+                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
               >
                 {t('nav.home')}
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-medium transition-colors duration-300"
+                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
               >
                 {t('nav.about')}
               </button>
               <button
                 onClick={() => scrollToSection('solutions')}
-                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-medium transition-colors duration-300"
+                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
               >
                 {t('nav.solutions')}
               </button>

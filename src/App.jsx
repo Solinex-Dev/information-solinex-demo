@@ -16,7 +16,7 @@ function App() {
         <main>
           <Hero />
           <TechStack />
-          <Showcase />
+          {/* <Showcase /> */}
           <AboutUs />
           <Solutions />
         </main>
