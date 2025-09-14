@@ -68,7 +68,7 @@ export const LanguageProvider = ({ children }) => {
       }
     }
     
-    return typeof value === 'string' ? value : fallback || key
+    return value || fallback || key
   }
 
   const value = {

@@ -18,9 +18,6 @@ const Hero = () => {
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             {t('hero.welcome')}{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-solinex-blue to-solinex-green">
-              Solinex
-            </span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
             {t('hero.tagline')}
@@ -28,7 +25,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button
               onClick={() => document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-solinex-blue hover:bg-solinex-teal text-white font-semibold py-3 px-8 rounded-3xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="border-2 border-solinex-blue hover:border-solinex-teal bg-solinex-blue hover:bg-solinex-teal text-white font-semibold py-3 px-8 rounded-3xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('hero.exploreSolutions')}
             </button>

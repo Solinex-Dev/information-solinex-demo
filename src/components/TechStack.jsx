@@ -44,7 +44,7 @@ const TechStack = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="flex flex-wrap justify-center gap-3">
           {techItems.map((tech, index) => (
             <div
               key={index}
@@ -55,7 +55,7 @@ const TechStack = () => {
                   <img 
                     src={tech.icon} 
                     alt={`${tech.name} icon`}
-                    className="w-28 h-28 object-contain"
+                    className="w-12 h-12 object-contain"
                   />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 group-hover:text-solinex-blue transition-colors duration-300">

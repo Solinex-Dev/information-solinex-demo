@@ -5,54 +5,52 @@
     "solutions": "โซลูชัน"
   },
   "hero": {
-    "welcome": "ยินดีต้อนรับสู่",
-    "tagline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "welcome": "Develop Ideas, Deliver Solutions",
+    "tagline": "จากไอเดียสู่โซลูชันที่ใช้งานได้จริง พัฒนาเว็บแอปพลิเคชันและบริการดิจิทัลเพื่อตอบโจทย์ธุรกิจของคุณ",
     "exploreSolutions": "ดูโซลูชัน",
-    "learnMore": "เรียนรู้เพิ่มเติม"
+    "learnMore": "เกี่ยวกับเรา"
   },
   "about": {
     "title": "เกี่ยวกับเรา",
-    "description1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "description2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "description3": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+    "description1": "เราคือกลุ่มนักพัฒนาที่ก่อตั้ง Solinex ขึ้นเพื่อร่วมกันพัฒนาโปรเจกต์ด้านซอฟต์แวร์และโซลูชันที่ใช้งานได้จริง ทั้งสำหรับองค์กรและบุคคลธรรมดา เป้าหมายของเราคือเปลี่ยนไอเดียให้กลายเป็นโซลูชันดิจิทัลที่จับต้องได้ พร้อมทั้งทดลอง สร้างสรรค์ และเรียนรู้ไปด้วยกัน",
     "values": {
       "innovation": {
         "title": "นวัตกรรม",
-        "description": "โซลูชันที่ทันสมัยสำหรับความท้าทายในยุคปัจจุบัน"
+        "description": "โซลูชันทันสมัย ตอบโจทย์ปัจจุบัน สร้างสรรค์ และมีผลลัพธ์ชัดเจน"
       },
       "collaboration": {
         "title": "การทำงานร่วมกัน",
-        "description": "ร่วมมือกันเพื่อบรรลุเป้าหมายของคุณ"
+        "description": "ทำงานร่วมกัน แบ่งปันไอเดีย และสร้างผลลัพธ์เพื่อบรรลุเป้าหมายของคุณ"
       },
       "excellence": {
         "title": "ความเป็นเลิศ",
-        "description": "ส่งมอบผลงานคุณภาพทุกครั้ง"
+        "description": "ส่งมอบโซลูชันคุณภาพ และมาตรฐาน"
       }
     }
   },
   "solutions": {
     "title": "โซลูชัน",
-    "subtitle": "โซลูชันเทคโนโลยีที่ครอบคลุมเพื่อตอบสนองเป้าหมายทางธุรกิจของคุณ",
+    "subtitle": "โซลูชันเทคโนโลยีที่เหมาะสมเพื่อตอบสนองเป้าหมายของคุณ",
     "items": {
       "development": {
         "title": "บริการพัฒนา",
-        "description": "การพัฒนาซอฟต์แวร์ตามความต้องการของธุรกิจ เราสร้างแอปพลิเคชันที่ขยายได้และบำรุงรักษาได้โดยใช้เทคโนโลยีสมัยใหม่และแนวทางปฏิบัติที่ดีที่สุด",
-        "features": ["แอปพลิเคชันเว็บ", "แอปมือถือ", "การพัฒนา API", "การออกแบบฐานข้อมูล"]
+        "description": "พัฒนาซอฟต์แวร์ตามความต้องการ ใช้งานง่าย สะดวกต่อการบำรุงรักษา และมีคุณภาพ",
+        "features": ["แอปพลิเคชันเว็บ", "การพัฒนา API", "การออกแบบฐานข้อมูล"]
       },
       "business": {
         "title": "โซลูชันธุรกิจ",
-        "description": "โซลูชันเทคโนโลยีธุรกิจที่ครอบคลุมเพื่อขับเคลื่อนการเติบโตและประสิทธิภาพ ตั้งแต่การเปลี่ยนแปลงดิจิทัลไปจนถึงการทำงานอัตโนมัติ",
+        "description": "โซลูชันเทคโนโลยีที่ครอบคลุมเพื่อขับเคลื่อนการเติบโตอย่างมีประสิทธิภาพ",
         "features": ["การเปลี่ยนแปลงดิจิทัล", "การทำงานอัตโนมัติ", "การรวมระบบ", "การย้ายไปยังคลาวด์"]
       },
       "approach": {
         "title": "แนวทาง",
-        "description": "วิธีการที่ได้รับการพิสูจน์แล้วของเรามั่นใจในการส่งมอบโครงการที่สำเร็จ เราใช้หลักการ Agile และรักษาการสื่อสารที่โปร่งใสตลอดกระบวนการพัฒนา",
-        "features": ["วิธี Agile", "การสื่อสารที่โปร่งใส", "การประกันคุณภาพ", "การสนับสนุนอย่างต่อเนื่อง"]
+        "description": "วิธีการที่ได้รับการพิสูจน์แล้วของเรามั่นใจในการส่งมอบงานที่สำเร็จ เราใช้หลักการ Agile และรักษาการสื่อสารตลอดกระบวนการพัฒนา",
+        "features": ["Agile process", "การสื่อสารอย่างมืออาชีพ", "การประกันคุณภาพ", "การสนับสนุนอย่างต่อเนื่อง"]
       }
     },
     "cta": {
       "title": "พร้อมเริ่มต้นแล้วหรือยัง?",
-      "description": "มาหารือกันว่าเราจะช่วยเปลี่ยนแปลงธุรกิจของคุณด้วยโซลูชันเทคโนโลยีของเราได้อย่างไร",
+      "description": "มาพูดคุยกันว่าเราจะช่วยเปลี่ยนแปลงธุรกิจของคุณด้วยโซลูชันของเราได้อย่างไร",
       "button": "ติดต่อเราวันนี้"
     },
     "learnMore": "เรียนรู้เพิ่มเติม"
@@ -60,7 +58,7 @@
   "footer": {
     "tagline": "โซลูชันเทคโนโลยีสำหรับอนาคต",
     "description": "เราส่งมอบโซลูชันเทคโนโลยีที่สร้างสรรค์เพื่อขับเคลื่อนการเติบโตทางธุรกิจและการเปลี่ยนแปลงดิจิทัล",
-    "quickLinks": "ลิงก์ด่วน",
+    "quickLinks": "Quick Links",
     "contactInfo": "ข้อมูลติดต่อ",
     "copyright": "© 2025 Solinex สงวนลิขสิทธิ์",
     "privacyPolicy": "นโยบายความเป็นส่วนตัว",
@@ -73,7 +71,7 @@
   },
   "techStack": {
     "title": "เทคโนโลยี",
-    "subtitle": "เราใช้เทคโนโลยีที่ทันสมัยเพื่อสร้างโซลูชันที่ทันสมัยและขยายได้"
+    "subtitle": "เราใช้เทคโนโลยีที่ทันสมัยเพื่อสร้างโซลูชันที่ทันสมัยและมีประสิทธิภาพ"
   },
   "showcase": {
     "title": "ผลงาน",
