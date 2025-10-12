@@ -3,9 +3,10 @@ import { LanguageProvider } from './contexts/LanguageContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import TechStack from './components/TechStack'
-import Showcase from './components/Showcase'
 import AboutUs from './components/AboutUs'
+import Projects from './components/Projects'
 import Solutions from './components/Solutions'
+import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
 
 function App() {
@@ -15,10 +16,11 @@ function App() {
         <Navbar />
         <main>
           <Hero />
-          <TechStack />
-          {/* <Showcase /> */}
           <AboutUs />
+          <Projects />
           <Solutions />
+          <TechStack />
+          <ContactForm />
         </main>
         <Footer />
       </div>

@@ -1,12 +1,18 @@
 import React from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import logo from '../assets/logo-solinex-512x512.png'
 
 const AboutUs = () => {
   const { t } = useLanguage()
+  const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 })
   
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section 
+      id="about" 
+      ref={ref}
+      className={`py-20 bg-gray-50 scroll-animate ${isVisible ? 'scroll-visible' : ''}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

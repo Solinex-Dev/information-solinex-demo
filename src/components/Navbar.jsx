@@ -54,6 +54,12 @@ const Navbar = () => {
                 {t('nav.about')}
               </button>
               <button
+                onClick={() => scrollToSection('projects')}
+                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
+              >
+                {t('nav.projects')}
+              </button>
+              <button
                 onClick={() => scrollToSection('solutions')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
               >
@@ -114,6 +120,12 @@ const Navbar = () => {
             className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
             {t('nav.about')}
+          </button>
+          <button
+            onClick={() => scrollToSection('projects')}
+            className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
+          >
+            {t('nav.projects')}
           </button>
           <button
             onClick={() => scrollToSection('solutions')}

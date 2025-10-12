@@ -1,12 +1,18 @@
 import React from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import logo from '../assets/logo-solinex-512x512.png'
 
 const Hero = () => {
   const { t } = useLanguage()
+  const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 })
   
   return (
-    <section id="home" className="pt-[175px] pb-[100px] flex items-center justify-center bg-gradient-to-br from-solinex-blue/10 via-solinex-green/5 to-solinex-teal/10">
+    <section 
+      id="home" 
+      ref={ref}
+      className={`pt-[175px] pb-[100px] flex items-center justify-center bg-gradient-to-br from-solinex-blue/10 via-solinex-green/5 to-solinex-teal/10 scroll-animate ${isVisible ? 'scroll-visible' : ''}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in">
           <div className="mb-8">
