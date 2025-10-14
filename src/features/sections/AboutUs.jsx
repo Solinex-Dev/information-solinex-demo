@@ -2,7 +2,7 @@ import React from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { Lightbulb, Users, Award, Zap, Code, Target } from 'lucide-react'
 import logo from '../../assets/logo-solinex-512x512.png'
-import { ScrollAnimatedSection, SectionHeader, Card } from '../common'
+import { ScrollAnimatedSection, SectionHeader, Card } from '../../shared/common'
 
 const AboutUs = () => {
   const { t } = useLanguage()

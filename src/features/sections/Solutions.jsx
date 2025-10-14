@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { ScrollAnimatedSection, SectionHeader, Card, TechBadge } from '../common'
+import { ScrollAnimatedSection, SectionHeader, Card, TechBadge } from '../../shared/common'
 import { createSolutionsData } from '../data'
 
 const Solutions = () => {

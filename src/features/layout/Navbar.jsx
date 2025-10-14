@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { LanguageSwitcher } from '../ui'
+import { LanguageSwitcher } from '../../shared/ui'
 import logo from '../../assets/logo-solinex-512x512.png'
 
 const Navbar = () => {

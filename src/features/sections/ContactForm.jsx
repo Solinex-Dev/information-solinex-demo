@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { useScrollAnimation } from '../../hooks/useScrollAnimation'
-import { ChevronDown, Send, Mail, Phone, CheckCircle, XCircle, Search, Globe, Smartphone, Link, Database, Lightbulb, Settings } from 'lucide-react'
+import { Send, Mail, Phone, CheckCircle, XCircle, Globe, Smartphone, Link, Database, Lightbulb, Settings } from 'lucide-react'
 import emailjs from '@emailjs/browser'
-import { PhoneInput } from '../ui/phone-input'
-import { Input } from '../ui/input'
-import { Textarea } from '../ui/textarea'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
+import { PhoneInput } from '../../shared/ui/phone-input'
+import { Input } from '../../shared/ui/input'
+import { Textarea } from '../../shared/ui/textarea'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../shared/ui/select'
 
 const ContactForm = () => {
   const { t } = useLanguage()

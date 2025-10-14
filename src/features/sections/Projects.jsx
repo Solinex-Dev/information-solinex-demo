@@ -1,9 +1,9 @@
 import React from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { ExternalLink, Clock, Users } from 'lucide-react'
-import { ScrollAnimatedSection, SectionHeader, TechBadge } from '../common'
+import { ScrollAnimatedSection, SectionHeader, TechBadge } from '../../shared/common'
 import { createProjectsData } from '../data'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../shared/ui/carousel'
 
 // Constants
 const CAROUSEL_OPTIONS = {
@@ -95,12 +95,12 @@ const Projects = () => {
   const projects = createProjectsData(t)
 
   return (
-    <ScrollAnimatedSection 
-      id="projects" 
+    <ScrollAnimatedSection
+      id="projects"
       className="py-20 bg-white"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
+        <SectionHeader
           titleKey="projects.title"
           subtitleKey="projects.subtitle"
         />
@@ -118,7 +118,6 @@ const Projects = () => {
           <CarouselNext className={`${CAROUSEL_NAVIGATION_CLASSES} -right-12`} />
         </Carousel>
       </div>
-
     </ScrollAnimatedSection>
   )
 }

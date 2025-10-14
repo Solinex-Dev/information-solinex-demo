@@ -1,7 +1,7 @@
 import React from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import logo from '../../assets/logo-solinex-512x512.png'
-import { ScrollAnimatedSection, GradientButton } from '../common'
+import { ScrollAnimatedSection, GradientButton } from '../../shared/common'
 
 const Hero = () => {
   const { t } = useLanguage()

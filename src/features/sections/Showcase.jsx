@@ -2,7 +2,7 @@ import React from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
-import { ScrollAnimatedSection, SectionHeader } from '../common'
+import { ScrollAnimatedSection, SectionHeader } from '../../shared/common'
 import { showcaseProjects } from '../data'
 
 // Import Swiper styles

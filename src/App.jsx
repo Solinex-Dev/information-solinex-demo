@@ -1,7 +1,7 @@
 import React from 'react'
 import { LanguageProvider } from './contexts/LanguageContext'
-import { Navbar, Footer } from './components/layout'
-import { Hero, AboutUs, Projects, Solutions, TechStack, ContactForm } from './components/sections'
+import { Navbar, Footer } from './features/layout'
+import { Hero, AboutUs, Projects, Solutions, TechStack, ContactForm } from './features/sections'
 
 function App() {
   return (

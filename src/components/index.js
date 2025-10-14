@@ -1,6 +1,6 @@
 // Main components barrel export
-export * from './layout'
-export * from './sections'
-export * from './ui'
-export * from './common'
-export * from './data'
+export * from '../features/layout'
+export * from '../features/sections'
+export * from '../shared/ui'
+export * from '../shared/common'
+export * from '../features/data'
