@@ -117,9 +117,9 @@
         "placeholder": "Select Service Topic",
         "options": {
           "web": "Web Development",
-          "mobile": "Mobile App Development",
-          "api": "API Development",
-          "database": "Database Design",
+          "mobile": "Mobile Application Development",
+          "api": "API Development & Integration",
+          "database": "Database Design & Management",
           "consultation": "Technical Consultation",
           "other": "Other Services"
         }
@@ -165,23 +165,23 @@
       "sections": {
         "informationWeCollect": {
           "title": "1. Information We Collect",
-          "content": "We collect information you provide directly to us, such as when you create an account, contact us, or use our services. This may include your name, email address, phone number, and any other information you choose to provide."
+          "content": "We collect information you provide directly to us through our contact form, including your name, email address, phone number, company name, service interest, and message content. This information is transmitted securely via EmailJS to our business email."
         },
         "howWeUseInformation": {
           "title": "2. How We Use Your Information",
-          "content": "We use the information we collect to provide, maintain, and improve our services, communicate with you, and ensure the security of our platform."
+          "content": "We use the information you provide to respond to your inquiries, provide information about our services, and communicate with you regarding potential business opportunities. We do not use your information for marketing purposes without your explicit consent."
         },
         "informationSharing": {
           "title": "3. Information Sharing",
-          "content": "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this privacy policy."
+          "content": "We do not sell, trade, or rent your personal information to third parties. Your contact form submissions are processed through EmailJS (a third-party email service) solely for the purpose of delivering your message to us. We do not share your information with any other parties."
         },
         "dataSecurity": {
           "title": "4. Data Security",
-          "content": "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+          "content": "We implement appropriate security measures to protect your personal information. Contact form submissions are transmitted securely via HTTPS encryption. We retain your information only as long as necessary to respond to your inquiry and maintain business records."
         },
         "yourRights": {
           "title": "5. Your Rights",
-          "content": "You have the right to access, update, or delete your personal information. You may also opt out of certain communications from us."
+          "content": "You have the right to request access to, correction of, or deletion of your personal information. To exercise these rights or if you have any concerns about your data, please contact us using the information provided below."
         },
         "contactUs": {
           "title": "6. Contact Us",

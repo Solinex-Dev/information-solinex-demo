@@ -1,7 +1,9 @@
 import React from 'react'
-import { useLanguage } from '../contexts/LanguageContext'
+import { useLanguage } from '../../contexts/LanguageContext'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { ScrollAnimatedSection, SectionHeader } from '../common'
+import { showcaseProjects } from '../data'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -10,51 +12,16 @@ import 'swiper/css/pagination'
 
 const Showcase = () => {
   const { t } = useLanguage()
-  
-  const projects = [
-    {
-      id: 1,
-      name: 'E-Commerce Platform',
-      description: 'Modern e-commerce solution with React and Node.js',
-      image: '🛒'
-    },
-    {
-      id: 2,
-      name: 'Data Analytics Dashboard',
-      description: 'Real-time analytics dashboard for business insights',
-      image: '📊'
-    },
-    {
-      id: 3,
-      name: 'Mobile Banking App',
-      description: 'Secure mobile banking application with biometric auth',
-      image: '🏦'
-    },
-    {
-      id: 4,
-      name: 'IoT Monitoring System',
-      description: 'Internet of Things monitoring and control platform',
-      image: '🌐'
-    },
-    {
-      id: 5,
-      name: 'AI Chatbot Platform',
-      description: 'Intelligent customer service chatbot solution',
-      image: '🤖'
-    }
-  ]
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <ScrollAnimatedSection className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {t('showcase.title', 'Showcase')}
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t('showcase.subtitle', 'Explore our portfolio of successful projects and solutions')}
-          </p>
-        </div>
+        <SectionHeader 
+          titleKey="showcase.title"
+          title="Showcase"
+          subtitleKey="showcase.subtitle"
+          subtitle="Explore our portfolio of successful projects and solutions"
+        />
 
         <div className="relative">
           <Swiper
@@ -78,7 +45,7 @@ const Showcase = () => {
             loop={true}
             className="rounded-3xl overflow-visible"
           >
-            {projects.map((project) => (
+            {showcaseProjects.map((project) => (
               <SwiperSlide key={project.id}>
                 <div className="bg-gradient-to-br from-solinex-blue/10 to-solinex-green/10 rounded-3xl p-20 mx-4 h-full">
                   <div className="text-center h-full flex flex-col justify-center">
@@ -112,7 +79,7 @@ const Showcase = () => {
           <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2"></div>
         </div>
       </div>
-    </section>
+    </ScrollAnimatedSection>
   )
 }
 

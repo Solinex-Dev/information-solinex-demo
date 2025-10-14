@@ -1,17 +1,16 @@
 import React from 'react'
-import { useLanguage } from '../contexts/LanguageContext'
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import logo from '../assets/logo-solinex-512x512.png'
+import { useLanguage } from '../../contexts/LanguageContext'
+import logo from '../../assets/logo-solinex-512x512.png'
+import { ScrollAnimatedSection, GradientButton } from '../common'
 
 const Hero = () => {
   const { t } = useLanguage()
-  const [ref, isVisible] = useScrollAnimation({ threshold: 0.1 })
   
   return (
-    <section 
+    <ScrollAnimatedSection 
       id="home" 
-      ref={ref}
-      className={`pt-[175px] pb-[100px] flex items-center justify-center bg-gradient-to-br from-solinex-blue/10 via-solinex-green/5 to-solinex-teal/10 scroll-animate ${isVisible ? 'scroll-visible' : ''}`}
+      className="pt-[175px] pb-[100px] flex items-center justify-center bg-gradient-to-br from-solinex-blue/10 via-solinex-green/5 to-solinex-teal/10"
+      threshold={0.1}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in">
@@ -29,22 +28,22 @@ const Hero = () => {
             {t('hero.tagline')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
+            <GradientButton
               onClick={() => document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-solinex-blue hover:border-solinex-teal bg-solinex-blue hover:bg-solinex-teal text-white font-semibold py-3 px-8 rounded-3xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              variant="primary"
             >
               {t('hero.exploreSolutions')}
-            </button>
-            <button
+            </GradientButton>
+            <GradientButton
               onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-solinex-blue text-solinex-blue hover:bg-solinex-blue hover:text-white font-semibold py-3 px-8 rounded-3xl transition-all duration-300 transform hover:scale-105"
+              variant="secondary"
             >
               {t('hero.learnMore')}
-            </button>
+            </GradientButton>
           </div>
         </div>
       </div>
-    </section>
+    </ScrollAnimatedSection>
   )
 }
 

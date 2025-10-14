@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useLanguage } from '../contexts/LanguageContext'
+import { useLanguage } from '../../contexts/LanguageContext'
 import { Shield, X, Mail, Phone } from 'lucide-react'
-import logoText from '../assets/logo-solinex-txt-light.png'
+import logoText from '../../assets/logo-solinex-txt-light.png'
 
 const Footer = () => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)

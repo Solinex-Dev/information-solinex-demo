@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
-import { useLanguage } from '../contexts/LanguageContext'
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import { ChevronDown, Send, Mail, Phone, CheckCircle, XCircle } from 'lucide-react'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { useScrollAnimation } from '../../hooks/useScrollAnimation'
+import { ChevronDown, Send, Mail, Phone, CheckCircle, XCircle, Search, Globe, Smartphone, Link, Database, Lightbulb, Settings } from 'lucide-react'
 import emailjs from '@emailjs/browser'
+import { PhoneInput } from '../ui/phone-input'
+import { Input } from '../ui/input'
+import { Textarea } from '../ui/textarea'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 
 const ContactForm = () => {
   const { t } = useLanguage()
@@ -18,6 +22,7 @@ const ContactForm = () => {
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null) // 'success' or 'error'
+  const [phoneValue, setPhoneValue] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -32,13 +37,20 @@ const ContactForm = () => {
         [name]: ''
       }))
     }
+    
+    // Auto-resize textarea
+    if (name === 'message') {
+      const textarea = e.target
+      textarea.style.height = 'auto'
+      textarea.style.height = Math.max(120, textarea.scrollHeight) + 'px'
+    }
   }
 
   const validateForm = () => {
     const newErrors = {}
     
     // Service validation
-    if (!formData.service.trim()) {
+    if (!formData.service || formData.service.trim() === '') {
       newErrors.service = t('contactForm.errors.serviceRequired')
     }
     
@@ -53,7 +65,7 @@ const ContactForm = () => {
     }
     
     // Phone validation
-    if (!formData.phone.trim()) {
+    if (!phoneValue.trim()) {
       newErrors.phone = t('contactForm.errors.phoneRequired')
     }
     
@@ -96,7 +108,7 @@ const ContactForm = () => {
         service: formData.service,
         from_name: formData.name,
         company: formData.company,
-        phone: formData.phone,
+        phone: phoneValue,
         from_email: formData.email,
         message: formData.message,
         to_email: 'admin@solinex.dev'
@@ -122,6 +134,7 @@ const ContactForm = () => {
         email: '',
         message: ''
       })
+      setPhoneValue('')
       
       // Clear success message after 5 seconds
       setTimeout(() => {
@@ -143,11 +156,13 @@ const ContactForm = () => {
   }
 
   return (
-    <section 
-      id="contact" 
-      ref={ref}
-      className={`py-20 bg-gradient-to-br from-gray-50 to-white relative scroll-animate ${isVisible ? 'scroll-visible' : ''}`}
-    >
+    <>
+      
+      <section 
+        id="contact" 
+        ref={ref}
+        className={`py-20 bg-gradient-to-br from-gray-50 to-white relative scroll-animate ${isVisible ? 'scroll-visible' : ''}`}
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Form Card */}
         <div className="w-full mx-auto">
@@ -157,6 +172,7 @@ const ContactForm = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-solinex-teal mb-2">
                 {t('contactForm.title')}
               </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-solinex-blue to-solinex-green mx-auto rounded-full mb-4"></div>
               <p className="text-lg text-solinex-teal/80 max-w-2xl mx-auto leading-relaxed">
                 {t('contactForm.subtitle')}
               </p>
@@ -164,124 +180,153 @@ const ContactForm = () => {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Row 1: Service Selection + Name */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Row 1: Service Selection */}
+              <div>
                 {/* Service Selection */}
-                <div className="relative group/select">
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-4 pr-12 rounded-full border bg-white/80 backdrop-blur-sm ${
-                      errors.service ? 'border-red-500' : 'border-solinex-blue/30'
-                    } focus:outline-none focus:ring-2 focus:ring-solinex-blue focus:border-transparent transition-all duration-300 ease-in-out appearance-none cursor-pointer text-solinex-teal placeholder-solinex-teal/60 hover:shadow-md hover:bg-white hover:border-solinex-blue/50 transform hover:scale-[1.02]`}
-                  >
-                    <option value="">{t('contactForm.fields.service.placeholder')}</option>
-                    <option value="web-development">{t('contactForm.fields.service.options.web')}</option>
-                    <option value="mobile-app">{t('contactForm.fields.service.options.mobile')}</option>
-                    <option value="api-development">{t('contactForm.fields.service.options.api')}</option>
-                    <option value="database-design">{t('contactForm.fields.service.options.database')}</option>
-                    <option value="consultation">{t('contactForm.fields.service.options.consultation')}</option>
-                    <option value="other">{t('contactForm.fields.service.options.other')}</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                    <ChevronDown className="w-5 h-5 text-solinex-teal/60 transition-transform duration-300 group-hover/select:text-solinex-blue group-hover/select:translate-y-0.5" />
-                  </div>
+                <div>
+                  <Select value={formData.service} onValueChange={(value) => setFormData(prev => ({ ...prev, service: value }))}>
+                    <SelectTrigger className={`${errors.service ? 'border-red-500 focus:ring-red-500' : ''}`}>
+                      <SelectValue placeholder={t('contactForm.fields.service.placeholder')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="web-development">
+                        <div className="flex items-center gap-2">
+                          <Globe className="w-4 h-4" />
+                          {t('contactForm.fields.service.options.web')}
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="mobile-app">
+                        <div className="flex items-center gap-2">
+                          <Smartphone className="w-4 h-4" />
+                          {t('contactForm.fields.service.options.mobile')}
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="api-development">
+                        <div className="flex items-center gap-2">
+                          <Link className="w-4 h-4" />
+                          {t('contactForm.fields.service.options.api')}
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="database-design">
+                        <div className="flex items-center gap-2">
+                          <Database className="w-4 h-4" />
+                          {t('contactForm.fields.service.options.database')}
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="consultation">
+                        <div className="flex items-center gap-2">
+                          <Lightbulb className="w-4 h-4" />
+                          {t('contactForm.fields.service.options.consultation')}
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="other">
+                        <div className="flex items-center gap-2">
+                          <Settings className="w-4 h-4" />
+                          {t('contactForm.fields.service.options.other')}
+                        </div>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                   {errors.service && (
-                    <p className="mt-1 text-sm text-red-500">{errors.service}</p>
+                    <p className="mt-1 text-sm text-red-500 animate-fade-in">{errors.service}</p>
                   )}
                 </div>
+              </div>
 
+              {/* Row 2: Name + Company */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name Field */}
                 <div>
-                  <input
+                  <Input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder={t('contactForm.fields.name.placeholder')}
-                    className={`w-full px-4 py-4 rounded-xl border bg-white/80 backdrop-blur-sm ${
-                      errors.name ? 'border-red-500' : 'border-solinex-blue/30'
-                    } focus:outline-none focus:ring-2 focus:ring-solinex-blue focus:border-transparent transition-all duration-200 text-solinex-teal placeholder-solinex-teal/60`}
+                    className={`h-12 px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 ${
+                      errors.name ? 'border-red-500 focus:ring-red-500' : ''
+                    }`}
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                   )}
                 </div>
-              </div>
 
-              {/* Row 2: Company + Phone + Email */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Company */}
                 <div>
-                  <input
+                  <Input
                     type="text"
                     id="company"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
                     placeholder={t('contactForm.fields.company.placeholder')}
-                    className={`w-full px-4 py-4 rounded-xl border bg-white/80 backdrop-blur-sm ${
-                      errors.company ? 'border-red-500' : 'border-solinex-blue/30'
-                    } focus:outline-none focus:ring-2 focus:ring-solinex-blue focus:border-transparent transition-all duration-200 text-solinex-teal placeholder-solinex-teal/60`}
+                    className={`h-12 px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 ${
+                      errors.company ? 'border-red-500 focus:ring-red-500' : ''
+                    }`}
                   />
                   {errors.company && (
                     <p className="mt-1 text-sm text-red-500">{errors.company}</p>
                   )}
                 </div>
+              </div>
 
-                {/* Phone */}
-                <div>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder={t('contactForm.fields.phone.placeholder')}
-                    className={`w-full px-4 py-4 rounded-xl border bg-white/80 backdrop-blur-sm ${
-                      errors.phone ? 'border-red-500' : 'border-solinex-blue/30'
-                    } focus:outline-none focus:ring-2 focus:ring-solinex-blue focus:border-transparent transition-all duration-200 text-solinex-teal placeholder-solinex-teal/60`}
-                  />
-                  {errors.phone && (
-                    <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-                  )}
-                </div>
-
+              {/* Row 3: Email + Phone */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Email */}
                 <div>
-                  <input
+                  <Input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder={t('contactForm.fields.email.placeholder')}
-                    className={`w-full px-4 py-4 rounded-xl border bg-white/80 backdrop-blur-sm ${
-                      errors.email ? 'border-red-500' : 'border-solinex-blue/30'
-                    } focus:outline-none focus:ring-2 focus:ring-solinex-blue focus:border-transparent transition-all duration-200 text-solinex-teal placeholder-solinex-teal/60`}
+                    className={`h-12 px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 ${
+                      errors.email ? 'border-red-500 focus:ring-red-500' : ''
+                    }`}
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-500">{errors.email}</p>
                   )}
                 </div>
+
+                {/* Phone */}
+                <div>
+                  <PhoneInput
+                    value={phoneValue}
+                    onChange={setPhoneValue}
+                    placeholder={t('contactForm.fields.phone.placeholder')}
+                    defaultCountry="TH"
+                    error={!!errors.phone}
+                  />
+                  {errors.phone && (
+                    <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                  )}
+                </div>
               </div>
 
-              {/* Row 3: Message */}
-              <div>
-                <textarea
+              {/* Row 4: Message */}
+              <div className="relative">
+                <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder={t('contactForm.fields.message.placeholder')}
                   rows="4"
-                  className={`w-full px-4 py-4 rounded-xl border bg-white/80 backdrop-blur-sm ${
-                    errors.message ? 'border-red-500' : 'border-solinex-blue/30'
-                  } focus:outline-none focus:ring-2 focus:ring-solinex-blue focus:border-transparent transition-all duration-200 resize-none text-solinex-teal placeholder-solinex-teal/60`}
-                ></textarea>
+                  style={{ minHeight: '120px', maxHeight: '400px' }}
+                  className={`w-full px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 resize-none leading-relaxed ${
+                    errors.message ? 'border-red-500 focus:ring-red-500' : ''
+                  }`}
+                />
+                
+                {/* Character counter */}
+                <div className="absolute bottom-3 right-3 text-xs text-solinex-teal/50 bg-white/60 px-2 py-1 rounded-full backdrop-blur-sm">
+                  {formData.message.length} characters
+                </div>
+                
                 {errors.message && (
                   <p className="mt-1 text-sm text-red-500">{errors.message}</p>
                 )}
@@ -349,7 +394,8 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   )
 }
 
