@@ -123,7 +123,14 @@
   },
   "techStack": {
     "title": "Tech Stack",
-    "subtitle": "We use cutting-edge technologies to build modern, scalable solutions"
+    "subtitle": "We use cutting-edge technologies to build modern, scalable solutions",
+    "groups": {
+      "frontend": "Frontend",
+      "backend": "Backend", 
+      "database": "Database",
+      "devops": "DevOps & Cloud",
+      "tools": "Tools"
+    }
   },
   "showcase": {
     "title": "Showcase",

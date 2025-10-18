@@ -14,8 +14,8 @@ const ContactForm = lazy(() => import('./features/sections/ContactForm'))
 function App() {
 
   return (
-    <ErrorBoundary>
-      <LanguageProvider>
+    <LanguageProvider>
+      <ErrorBoundary>
         <div className="min-h-screen bg-white">
           <Navbar />
           <main>
@@ -38,8 +38,8 @@ function App() {
           </main>
           <Footer />
         </div>
-      </LanguageProvider>
-    </ErrorBoundary>
+      </ErrorBoundary>
+    </LanguageProvider>
   )
 }
 

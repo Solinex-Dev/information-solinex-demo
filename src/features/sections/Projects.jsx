@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { ExternalLink } from 'lucide-react'
 import { ScrollAnimatedSection, SectionHeader } from '../../shared/common'
 import { createProjectsData } from '../data'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../../shared/ui/carousel'
@@ -69,23 +68,15 @@ const ProjectCard = ({ project, isActive = false }) => {
 
       {/* Content Overlay */}
       <div className="relative z-10 flex flex-col h-full p-6 text-white">
-        {/* Top Section - Title, Category, and Logo */}
+        {/* Top Section - Title and Category */}
         <div className="flex-1">
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex-1">
-              <h3 className="text-xl font-bold mb-2 leading-tight">
-                {project.title}
-              </h3>
-              <span className="text-xs font-bold uppercase tracking-wider opacity-90">
-                {project.category}
-              </span>
-            </div>
-            {/* Project Logo Area */}
-            <div className="ml-4 flex-shrink-0">
-              <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                <span className="text-2xl">{project.icon}</span>
-              </div>
-            </div>
+          <div className="mb-4">
+            <h3 className="text-xl font-bold mb-2 leading-tight">
+              {project.title}
+            </h3>
+            <span className="text-xs font-bold uppercase tracking-wider opacity-90">
+              {project.category}
+            </span>
           </div>
         </div>
 
