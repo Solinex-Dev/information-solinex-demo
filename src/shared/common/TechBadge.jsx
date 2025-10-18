@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const TechBadge = ({ 
   children, 
@@ -7,12 +7,12 @@ const TechBadge = ({
   size = 'sm', // 'xs', 'sm', 'md'
   ...props 
 }) => {
-  const baseClasses = 'inline-flex items-center font-medium border transition-colors duration-200'
+  const baseClasses = 'inline-flex items-center font-bold border transition-colors duration-200'
   
   const sizeClasses = {
-    xs: 'px-1 py-0.5 text-xs',
-    sm: 'px-2 py-1 text-xs',
-    md: 'px-3 py-1 text-sm'
+    xs: 'px-2 py-1 text-xs',
+    sm: 'px-3 py-1.5 text-xs',
+    md: 'px-4 py-2 text-sm'
   }
   
   const variantClasses = {
@@ -31,4 +31,4 @@ const TechBadge = ({
   )
 }
 
-export default TechBadge
+export default memo(TechBadge)

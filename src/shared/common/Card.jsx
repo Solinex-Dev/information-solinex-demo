@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 const Card = ({ 
   children, 
@@ -22,4 +22,4 @@ const Card = ({
   )
 }
 
-export default Card
+export default memo(Card)

@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Line clamp utility for text truncation */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Prevent body scroll when dropdown is open while maintaining scrollbar space */
+body:has([data-radix-select-content][data-state="open"]) {
+  overflow: hidden;
+  padding-right: 17px; /* Standard scrollbar width on most systems */
+}
+
+/* For systems with different scrollbar widths */
+@media (max-width: 768px) {
+  body:has([data-radix-select-content][data-state="open"]) {
+    padding-right: 0px; /* Mobile devices typically don't have visible scrollbars */
+  }
+}
+
 /* Custom Solinex color palette */
 :root {
   --solinex-yellow: #FFE838;

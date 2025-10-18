@@ -12,7 +12,7 @@ const Solutions = () => {
       id="solutions" 
       className="py-20 bg-white"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader 
           titleKey="solutions.title"
           subtitleKey="solutions.subtitle"
@@ -23,7 +23,7 @@ const Solutions = () => {
             <Card
               key={index}
               background="bg-gradient-to-br from-gray-50 to-gray-100"
-              className="group flex flex-col"
+              className="group flex flex-col min-h-96"
             >
               <div className="text-center mb-6">
                 <div className="flex justify-center mb-4 group-hover:scale-110 transition-transform duration-300">

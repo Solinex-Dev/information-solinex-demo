@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { LanguageSwitcher } from '../../shared/ui'
+import { Home, Users, Briefcase, Mail, Settings } from 'lucide-react'
 import logo from '../../assets/logo-solinex-512x512.png'
 
 const Navbar = () => {
@@ -53,17 +54,23 @@ const Navbar = () => {
               >
                 {t('nav.about')}
               </button>
-              <button
+              {/* <button
                 onClick={() => scrollToSection('projects')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
               >
                 {t('nav.projects')}
-              </button>
+              </button> */}
               <button
                 onClick={() => scrollToSection('solutions')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
               >
                 {t('nav.solutions')}
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
+              >
+                {t('nav.contact')}
               </button>
             </div>
           </div>
@@ -78,9 +85,11 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-solinex-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-solinex-blue"
-              aria-expanded="false"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isMenuOpen ? "Close main menu" : "Open main menu"}
             >
-              <span className="sr-only">Open main menu</span>
+              <span className="sr-only">{isMenuOpen ? "Close main menu" : "Open main menu"}</span>
               {/* Hamburger icon */}
               <svg
                 className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
@@ -107,35 +116,46 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation Menu */}
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
+      <div id="mobile-menu" className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
           <button
             onClick={() => scrollToSection('home')}
-            className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
+            className="text-gray-700 hover:text-solinex-blue flex items-center gap-3 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
+            <Home className="w-5 h-5" />
             {t('nav.home')}
           </button>
           <button
             onClick={() => scrollToSection('about')}
-            className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
+            className="text-gray-700 hover:text-solinex-blue flex items-center gap-3 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
+            <Users className="w-5 h-5" />
             {t('nav.about')}
           </button>
-          <button
+          {/* <button
             onClick={() => scrollToSection('projects')}
-            className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
+            className="text-gray-700 hover:text-solinex-blue flex items-center gap-3 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
+            <Briefcase className="w-5 h-5" />
             {t('nav.projects')}
-          </button>
+          </button> */}
           <button
             onClick={() => scrollToSection('solutions')}
-            className="text-gray-700 hover:text-solinex-blue block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
+            className="text-gray-700 hover:text-solinex-blue flex items-center gap-3 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
+            <Settings className="w-5 h-5" />
             {t('nav.solutions')}
+          </button>
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="text-gray-700 hover:text-solinex-blue flex items-center gap-3 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
+          >
+            <Mail className="w-5 h-5" />
+            {t('nav.contact')}
           </button>
           
           {/* Language Switcher - Mobile */}
-          <div className="px-3 py-2">
+          <div className="px-3 py-2 relative">
             <LanguageSwitcher />
           </div>
         </div>

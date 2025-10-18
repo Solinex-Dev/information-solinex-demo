@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { Shield, X, Mail, Phone } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 import logoText from '../../assets/logo-solinex-txt-light.png'
 
 const Footer = () => {
@@ -235,6 +235,12 @@ const Footer = () => {
                 className="block text-solinex-green hover:text-white transition-colors duration-300 text-left"
               >
                 {t('nav.home')}
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="block text-solinex-green hover:text-white transition-colors duration-300 text-left"
+              >
+                {t('nav.contact')}
               </button>
             </div>
           </div>

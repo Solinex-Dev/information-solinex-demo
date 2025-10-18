@@ -59,10 +59,8 @@ const ContactForm = () => {
       newErrors.name = t('contactForm.errors.nameRequired')
     }
     
-    // Company validation
-    if (!formData.company.trim()) {
-      newErrors.company = t('contactForm.errors.companyRequired')
-    }
+    // Company validation (optional)
+    // Company is now optional, no validation needed
     
     // Phone validation
     if (!phoneValue.trim()) {
@@ -96,7 +94,6 @@ const ContactForm = () => {
     setSubmitStatus(null)
     
     try {
-      console.log('📧 Sending form via EmailJS...')
       
       // EmailJS configuration
       const serviceId = 'service_g1sdxan'
@@ -111,7 +108,9 @@ const ContactForm = () => {
         phone: phoneValue,
         from_email: formData.email,
         message: formData.message,
-        to_email: 'admin@solinex.dev'
+        to_email: 'admin@solinex.dev',
+        language: t('language.current') || 'English',
+        submission_time: new Date().toLocaleString()
       }
       
       // Send email using EmailJS
@@ -122,7 +121,6 @@ const ContactForm = () => {
         publicKey
       )
       
-      console.log('✅ Form sent successfully via EmailJS')
       setSubmitStatus('success')
       
       // Reset form
@@ -142,8 +140,10 @@ const ContactForm = () => {
       }, 5000)
       
     } catch (error) {
-      console.error('❌ Error submitting form:', error)
-      console.error('Error details:', error.message || error)
+      // Log error for debugging (remove in production)
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Form submission error:', error)
+      }
       setSubmitStatus('error')
       
       // Clear error message after 7 seconds
@@ -163,12 +163,12 @@ const ContactForm = () => {
         ref={ref}
         className={`py-20 bg-gradient-to-br from-gray-50 to-white relative scroll-animate ${isVisible ? 'scroll-visible' : ''}`}
       >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Form Card */}
         <div className="w-full mx-auto">
           <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden border border-gray-200">
             {/* Header */}
-            <div className="text-center mb-8">
+            <header className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-solinex-teal mb-2">
                 {t('contactForm.title')}
               </h2>
@@ -176,7 +176,7 @@ const ContactForm = () => {
               <p className="text-lg text-solinex-teal/80 max-w-2xl mx-auto leading-relaxed">
                 {t('contactForm.subtitle')}
               </p>
-            </div>
+            </header>
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -184,6 +184,9 @@ const ContactForm = () => {
               <div>
                 {/* Service Selection */}
                 <div>
+                  <label htmlFor="service" className="block text-sm font-medium text-solinex-teal mb-2">
+                    {t('contactForm.fields.service.label')} <span className="text-red-500">*</span>
+                  </label>
                   <Select value={formData.service} onValueChange={(value) => setFormData(prev => ({ ...prev, service: value }))}>
                     <SelectTrigger className={`${errors.service ? 'border-red-500 focus:ring-red-500' : ''}`}>
                       <SelectValue placeholder={t('contactForm.fields.service.placeholder')} />
@@ -228,15 +231,18 @@ const ContactForm = () => {
                     </SelectContent>
                   </Select>
                   {errors.service && (
-                    <p className="mt-1 text-sm text-red-500 animate-fade-in">{errors.service}</p>
+                    <p id="service-error" className="mt-1 text-sm text-red-500 animate-fade-in" role="alert">{errors.service}</p>
                   )}
                 </div>
               </div>
 
-              {/* Row 2: Name + Company */}
+              {/* Row 2: Name + Company (Optional) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name Field */}
                 <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-solinex-teal mb-2">
+                    {t('contactForm.fields.name.label')} <span className="text-red-500">*</span>
+                  </label>
                   <Input
                     type="text"
                     id="name"
@@ -244,17 +250,21 @@ const ContactForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder={t('contactForm.fields.name.placeholder')}
+                    aria-describedby={errors.name ? "name-error" : undefined}
                     className={`h-12 px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 ${
                       errors.name ? 'border-red-500 focus:ring-red-500' : ''
                     }`}
                   />
                   {errors.name && (
-                    <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+                    <p id="name-error" className="mt-1 text-sm text-red-500" role="alert">{errors.name}</p>
                   )}
                 </div>
 
-                {/* Company */}
+                {/* Company (Optional) */}
                 <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-solinex-teal mb-2">
+                    {t('contactForm.fields.company.label')} <span className="text-gray-500">({t('contactForm.fields.company.optional')})</span>
+                  </label>
                   <Input
                     type="text"
                     id="company"
@@ -262,12 +272,13 @@ const ContactForm = () => {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder={t('contactForm.fields.company.placeholder')}
+                    aria-describedby={errors.company ? "company-error" : undefined}
                     className={`h-12 px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 ${
                       errors.company ? 'border-red-500 focus:ring-red-500' : ''
                     }`}
                   />
                   {errors.company && (
-                    <p className="mt-1 text-sm text-red-500">{errors.company}</p>
+                    <p id="company-error" className="mt-1 text-sm text-red-500" role="alert">{errors.company}</p>
                   )}
                 </div>
               </div>
@@ -276,6 +287,9 @@ const ContactForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Email */}
                 <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-solinex-teal mb-2">
+                    {t('contactForm.fields.email.label')} <span className="text-red-500">*</span>
+                  </label>
                   <Input
                     type="email"
                     id="email"
@@ -283,32 +297,42 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder={t('contactForm.fields.email.placeholder')}
+                    required
+                    aria-describedby={errors.email ? "email-error" : undefined}
                     className={`h-12 px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 ${
                       errors.email ? 'border-red-500 focus:ring-red-500' : ''
                     }`}
                   />
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                    <p id="email-error" className="mt-1 text-sm text-red-500" role="alert">{errors.email}</p>
                   )}
                 </div>
 
                 {/* Phone */}
                 <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-solinex-teal mb-2">
+                    {t('contactForm.fields.phone.label')} <span className="text-red-500">*</span>
+                  </label>
                   <PhoneInput
                     value={phoneValue}
                     onChange={setPhoneValue}
                     placeholder={t('contactForm.fields.phone.placeholder')}
                     defaultCountry="TH"
                     error={!!errors.phone}
+                    required
+                    aria-describedby={errors.phone ? "phone-error" : undefined}
                   />
                   {errors.phone && (
-                    <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                    <p id="phone-error" className="mt-1 text-sm text-red-500" role="alert">{errors.phone}</p>
                   )}
                 </div>
               </div>
 
               {/* Row 4: Message */}
               <div className="relative">
+                <label htmlFor="message" className="block text-sm font-medium text-solinex-teal mb-2">
+                  {t('contactForm.fields.message.label')} <span className="text-red-500">*</span>
+                </label>
                 <Textarea
                   id="message"
                   name="message"
@@ -316,6 +340,8 @@ const ContactForm = () => {
                   onChange={handleChange}
                   placeholder={t('contactForm.fields.message.placeholder')}
                   rows="4"
+                  required
+                  aria-describedby={errors.message ? "message-error" : undefined}
                   style={{ minHeight: '120px', maxHeight: '400px' }}
                   className={`w-full px-4 py-4 rounded-xl border-solinex-blue/30 bg-white/80 backdrop-blur-sm text-solinex-teal placeholder:text-solinex-teal/60 focus:ring-solinex-blue focus:border-solinex-blue transition-all duration-200 resize-none leading-relaxed ${
                     errors.message ? 'border-red-500 focus:ring-red-500' : ''
@@ -328,7 +354,7 @@ const ContactForm = () => {
                 </div>
                 
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                  <p id="message-error" className="mt-1 text-sm text-red-500" role="alert">{errors.message}</p>
                 )}
               </div>
 

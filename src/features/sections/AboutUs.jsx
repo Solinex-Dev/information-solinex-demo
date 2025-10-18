@@ -43,11 +43,11 @@ const AboutUs = () => {
                 {/* Mini Stats */}
                 <div className="grid grid-cols-3 gap-4 mt-8">
                   <div className="bg-white rounded-2xl p-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <div className="text-3xl font-bold text-solinex-blue">6+</div>
+                    <div className="text-3xl font-bold text-solinex-blue">2</div>
                     <div className="text-xs text-gray-600 mt-1">Projects</div>
                   </div>
                   <div className="bg-white rounded-2xl p-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <div className="text-3xl font-bold text-solinex-teal">5+</div>
+                    <div className="text-3xl font-bold text-solinex-teal">2</div>
                     <div className="text-xs text-gray-600 mt-1">Clients</div>
                   </div>
                   <div className="bg-white rounded-2xl p-4 shadow-lg transform hover:scale-105 transition-transform duration-300">
@@ -74,8 +74,8 @@ const AboutUs = () => {
                   <Code className="w-6 h-6 text-solinex-blue" />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Modern Tech</div>
-                  <div className="text-xs text-gray-600">Latest Stack</div>
+                  <div className="font-semibold text-gray-900">{t('about.quickFeatures.modernTech.title')}</div>
+                  <div className="text-xs text-gray-600">{t('about.quickFeatures.modernTech.subtitle')}</div>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -83,8 +83,8 @@ const AboutUs = () => {
                   <Zap className="w-6 h-6 text-solinex-green" />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Fast Delivery</div>
-                  <div className="text-xs text-gray-600">Agile Process</div>
+                  <div className="font-semibold text-gray-900">{t('about.quickFeatures.fastDelivery.title')}</div>
+                  <div className="text-xs text-gray-600">{t('about.quickFeatures.fastDelivery.subtitle')}</div>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -92,8 +92,8 @@ const AboutUs = () => {
                   <Users className="w-6 h-6 text-solinex-teal" />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Team Work</div>
-                  <div className="text-xs text-gray-600">Collaborative</div>
+                  <div className="font-semibold text-gray-900">{t('about.quickFeatures.teamWork.title')}</div>
+                  <div className="text-xs text-gray-600">{t('about.quickFeatures.teamWork.subtitle')}</div>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -101,8 +101,8 @@ const AboutUs = () => {
                   <Target className="w-6 h-6 text-purple-600" />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Goal Focused</div>
-                  <div className="text-xs text-gray-600">Results Driven</div>
+                  <div className="font-semibold text-gray-900">{t('about.quickFeatures.goalFocused.title')}</div>
+                  <div className="text-xs text-gray-600">{t('about.quickFeatures.goalFocused.subtitle')}</div>
                 </div>
               </div>
             </div>
