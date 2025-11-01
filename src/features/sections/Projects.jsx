@@ -47,11 +47,11 @@ const ProjectCard = React.memo(({ project, isActive = false }) => {
   const [imageError, setImageError] = React.useState(false)
 
   return (
-    <div className={`relative overflow-hidden w-full group cursor-pointer rounded-2xl sm:rounded-3xl transition-all duration-300 ease-out pt-[75%] ${
-      isActive ? 'shadow-lg z-10' : 'shadow-md'
+    <div className={`relative overflow-hidden w-full group rounded-2xl sm:rounded-3xl transition-all duration-500 ease-out pt-[75%] ${
+      isActive ? 'shadow-2xl scale-[1.02]' : 'shadow-lg hover:shadow-2xl hover:scale-[1.02]'
     }`}>
       {/* Background Image */}
-      <div className="absolute inset-0 transition-transform duration-500">
+      <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
         {!imageError ? (
           <img
             src={project.imageUrl}
@@ -63,36 +63,41 @@ const ProjectCard = React.memo(({ project, isActive = false }) => {
         ) : (
           <div className={`w-full h-full ${project.imageColor}`}></div>
         )}
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
+        {/* Overlay for better text readability - darkens on hover */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70 group-hover:from-black/30 group-hover:via-black/50 group-hover:to-black/80 transition-all duration-500"></div>
       </div>
 
       {/* Content Overlay */}
       <div className="absolute inset-0 z-10 flex flex-col p-4 sm:p-5 md:p-6 text-white">
         {/* Top Section - Title and Category */}
         <div className="flex-1">
-          <div className="mb-3 sm:mb-4">
+          <div className="mb-3 sm:mb-4 transform transition-transform duration-500 group-hover:-translate-y-1">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-1.5 sm:mb-2 leading-tight">
               {project.title}
             </h3>
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider opacity-90">
+            <span className="inline-block text-xs sm:text-sm font-bold uppercase tracking-wider bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full border border-white/40">
               {project.category}
             </span>
           </div>
         </div>
 
         {/* Bottom Section - View Project Button */}
-        <div className="flex justify-end">
+        <div className="flex justify-end transform transition-all duration-500 group-hover:translate-y-0 translate-y-2 opacity-90 group-hover:opacity-100">
           {project.link && (
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group border border-white/60 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-200 inline-flex items-center after:content-['→'] after:ml-1"
+              className="relative border-2 border-white/70 bg-white/10 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-black hover:border-white transition-all duration-300 inline-flex items-center rounded-lg overflow-hidden group/button shadow-lg hover:shadow-xl hover:scale-105"
               aria-label={t('projects.viewProject')}
               onClick={(e) => e.stopPropagation()}
             >
-              {t('projects.viewProject')}
+              <span className="relative z-10 flex items-center gap-1">
+                {t('projects.viewProject')}
+                <span className="transform transition-transform duration-300 group-hover/button:translate-x-1">→</span>
+              </span>
+              {/* Button shine effect on hover */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/button:translate-x-full transition-transform duration-1000"></span>
             </a>
           )}
         </div>
@@ -103,7 +108,7 @@ const ProjectCard = React.memo(({ project, isActive = false }) => {
 
 const Projects = () => {
   const { t } = useLanguage()
-  const projects = createProjectsData(t)
+  const projects = createProjectsData()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [carouselApi, setCarouselApi] = useState()
   const [totalSlides, setTotalSlides] = useState(0)
@@ -181,7 +186,7 @@ const Projects = () => {
             <CarouselContent className="-ml-1 sm:-ml-2 md:-ml-4 flex items-stretch">
               {projects.map((project, index) => (
                 <CarouselItem key={project.id} className="pl-1 sm:pl-2 md:pl-4 basis-full flex w-full">
-                  <div className="w-full h-full flex items-center justify-center py-4 sm:py-6 px-2 sm:px-3 md:px-4">
+                  <div className="w-full h-full flex items-center justify-center py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8">
                     <div className="w-full max-w-sm sm:max-w-md md:max-w-xl lg:max-w-2xl mx-auto">
                     <ProjectCard
                       project={project}
