@@ -4,7 +4,9 @@
     "about": "About us",
     "projects": "Projects",
     "solutions": "Solutions",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Open main menu",
+    "closeMenu": "Close main menu"
   },
   "hero": {
     "welcome": "Develop Ideas, Deliver Solutions",
@@ -15,6 +17,11 @@
   "about": {
     "title": "About us",
     "description1": "We are a team of developers who founded Solinex to collaborate on software projects and real-world solutions for both organizations and individuals. Our goal is to transform ideas into tangible digital solutions while experimenting, creating, and learning together. We believe in the power of technology to solve real problems and drive meaningful change.",
+    "stats": {
+      "projects": "Projects",
+      "clients": "Clients",
+      "quality": "Quality"
+    },
     "values": {
       "innovation": {
         "title": "Innovation",
@@ -51,7 +58,11 @@
   "projects": {
     "title": "Our Projects",
     "subtitle": "Explore our portfolio of successful projects and innovative solutions",
-    "viewProject": "View Details",
+    "viewProject": "View",
+    "carousel": {
+      "prev": "Previous project",
+      "next": "Next project"
+    },
     "items": {
       "ecommerce": {
         "title": "E-Commerce Platform",
@@ -129,7 +140,9 @@
       "backend": "Backend", 
       "database": "Database",
       "devops": "DevOps & Cloud",
-      "tools": "Tools"
+      "tools": "Tools",
+      "technology": "Technology",
+      "platformService": "Platform & Service"
     }
   },
   "showcase": {

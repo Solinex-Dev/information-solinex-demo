@@ -54,12 +54,12 @@ const Navbar = () => {
               >
                 {t('nav.about')}
               </button>
-              {/* <button
+              <button
                 onClick={() => scrollToSection('projects')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
               >
                 {t('nav.projects')}
-              </button> */}
+              </button>
               <button
                 onClick={() => scrollToSection('solutions')}
                 className="text-gray-700 hover:text-solinex-blue px-3 py-2 text-sm font-bold transition-colors duration-300"
@@ -87,9 +87,9 @@ const Navbar = () => {
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-solinex-blue hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-solinex-blue"
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
-              aria-label={isMenuOpen ? "Close main menu" : "Open main menu"}
+              aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
             >
-              <span className="sr-only">{isMenuOpen ? "Close main menu" : "Open main menu"}</span>
+              <span className="sr-only">{isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}</span>
               {/* Hamburger icon */}
               <svg
                 className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
@@ -132,13 +132,13 @@ const Navbar = () => {
             <Users className="w-5 h-5" />
             {t('nav.about')}
           </button>
-          {/* <button
+          <button
             onClick={() => scrollToSection('projects')}
             className="text-gray-700 hover:text-solinex-blue flex items-center gap-3 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"
           >
             <Briefcase className="w-5 h-5" />
             {t('nav.projects')}
-          </button> */}
+          </button>
           <button
             onClick={() => scrollToSection('solutions')}
             className="text-gray-700 hover:text-solinex-blue flex items-center gap-3 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-300"

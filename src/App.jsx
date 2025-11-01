@@ -11,6 +11,13 @@ const Solutions = lazy(() => import('./features/sections/Solutions'))
 const TechStack = lazy(() => import('./features/sections/TechStack'))
 const ContactForm = lazy(() => import('./features/sections/ContactForm'))
 
+// Loading Spinner Component
+const LoadingSpinner = () => (
+  <div className="h-96 flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solinex-blue"></div>
+  </div>
+)
+
 function App() {
 
   return (
@@ -20,19 +27,19 @@ function App() {
           <Navbar />
           <main>
             <Hero />
-            <Suspense fallback={<div className="h-96 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solinex-blue"></div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <AboutUs />
             </Suspense>
-            <Suspense fallback={<div className="h-96 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solinex-blue"></div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <Projects />
             </Suspense>
-            <Suspense fallback={<div className="h-96 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solinex-blue"></div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <Solutions />
             </Suspense>
-            <Suspense fallback={<div className="h-96 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solinex-blue"></div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <TechStack />
             </Suspense>
-            <Suspense fallback={<div className="h-96 flex items-center justify-center"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-solinex-blue"></div></div>}>
+            <Suspense fallback={<LoadingSpinner />}>
               <ContactForm />
             </Suspense>
           </main>

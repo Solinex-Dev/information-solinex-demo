@@ -1,64 +1,54 @@
 import React from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { ScrollAnimatedSection, SectionHeader, Card } from '../../shared/common'
 import { techGroups } from '../data'
 
 const TechStack = () => {
   const { t } = useLanguage()
 
+  // Flatten all tech items from groups into a single array
+  const techItems = techGroups.flatMap(group => group.items)
+
   return (
-    <ScrollAnimatedSection className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader 
-          titleKey="techStack.title"
-          title="Tech Stack"
-          subtitleKey="techStack.subtitle"
-          subtitle="We use cutting-edge technologies to build modern, scalable solutions"
-        />
+    <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {t('techStack.title')}
+          </h2>
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            {t('techStack.subtitle')}
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mt-12">
-          {techGroups.map((group, groupIndex) => (
-            <div key={groupIndex} className="flex flex-col">
-              {/* Group Header */}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
-                  {t(group.titleKey) || group.title}
-                </h3>
-                <div className="h-1 w-16 bg-gradient-to-r from-solinex-blue to-blue-600 mx-auto rounded-full"></div>
-              </div>
-
-              {/* Tech Items in Vertical Layout */}
-              <div className="flex flex-col gap-3 flex-grow">
-                {group.items.map((tech, techIndex) => (
-                  <Card
-                    key={`${groupIndex}-${techIndex}`}
-                    padding="p-4"
-                    shadow="shadow-sm"
-                    hover={true}
-                    className="group transition-all duration-300 hover:shadow-md"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <img 
-                          src={tech.icon} 
-                          alt={`${tech.name} icon`}
-                          className="w-10 h-10 object-contain"
-                        />
-                      </div>
-                      <div className="flex-grow">
-                        <h4 className="text-sm font-semibold text-gray-900 group-hover:text-solinex-blue transition-colors duration-300">
-                          {tech.name}
-                        </h4>
-                      </div>
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          {techItems.map((tech) => (
+            <div
+              key={tech.name}
+              className="p-4 sm:p-6 transition-all duration-300 transform hover:scale-105 group"
+            >
+              <div className="text-center">
+                <div className="mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                  {tech.icon ? (
+                    <img
+                      src={tech.icon}
+                      alt={`${tech.name} icon`}
+                      className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                      <span className="text-xs font-bold text-gray-500">{tech.name[0]}</span>
                     </div>
-                  </Card>
-                ))}
+                  )}
+                </div>
+                <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 group-hover:text-solinex-blue transition-colors duration-300">
+                  {tech.name}
+                </h3>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </ScrollAnimatedSection>
+    </section>
   )
 }
 
