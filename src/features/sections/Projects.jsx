@@ -48,7 +48,7 @@ const ProjectCard = React.memo(({ project, isActive = false }) => {
 
   return (
     <div className={`relative overflow-hidden w-full group rounded-2xl sm:rounded-3xl transition-all duration-500 ease-out pt-[75%] ${
-      isActive ? 'shadow-2xl scale-[1.02]' : 'shadow-lg hover:shadow-2xl hover:scale-[1.02]'
+      isActive ? ' scale-[1.02]' : 'shadow-lg hover:scale-[1.02]'
     }`}>
       {/* Background Image */}
       <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
