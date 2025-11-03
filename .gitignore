@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.local
 
 # Editor directories and files
 .vscode/*
@@ -30,3 +32,8 @@ package-lock.json
 .scannerwork/.sonar_lock
 .scannerwork/report-task.txt
 sonar-project.properties
+
+
+.env
+.env.*
+!.env.example

@@ -2,12 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Line clamp utility for text truncation */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Prevent body scroll when dropdown is open while maintaining scrollbar space */
+body:has([data-radix-select-content][data-state="open"]) {
+  overflow: hidden;
+  padding-right: 17px; /* Standard scrollbar width on most systems */
+}
+
+/* For systems with different scrollbar widths */
+@media (max-width: 768px) {
+  body:has([data-radix-select-content][data-state="open"]) {
+    padding-right: 0px; /* Mobile devices typically don't have visible scrollbars */
+  }
+}
+
 /* Custom Solinex color palette */
 :root {
   --solinex-yellow: #FFE838;
   --solinex-green: #67C090;
   --solinex-blue: #339AC7;
   --solinex-teal: #447170;
+  
+  /* shadcn/ui CSS variables */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
 }
 
 /* Custom scrollbar */
@@ -179,4 +222,159 @@ body {
 
 .swiper-pagination {
   display: none;
+}
+
+/* Animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s;
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+/* Scroll Animation Keyframes */
+@keyframes scrollFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollFadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scrollFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll Animation Classes */
+.scroll-animate {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.scroll-visible {
+  animation: scrollFadeInUp 0.8s ease-out forwards;
+}
+
+.scroll-animate-left {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate-left.scroll-visible {
+  animation: scrollFadeInLeft 0.8s ease-out forwards;
+}
+
+.scroll-animate-right {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate-right.scroll-visible {
+  animation: scrollFadeInRight 0.8s ease-out forwards;
+}
+
+/* Animation delays for staggered effects */
+.scroll-delay-100 {
+  animation-delay: 0.1s;
+}
+
+.scroll-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.scroll-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.scroll-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.scroll-delay-500 {
+  animation-delay: 0.5s;
 }

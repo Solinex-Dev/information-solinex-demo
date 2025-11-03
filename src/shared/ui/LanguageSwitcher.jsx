@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { useLanguage } from '../contexts/LanguageContext'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { US, TH } from 'country-flag-icons/react/3x2'
 
 const LanguageSwitcher = () => {
   const { language, changeLanguage, t } = useLanguage()
@@ -7,8 +8,8 @@ const LanguageSwitcher = () => {
   const dropdownRef = useRef(null)
 
   const languages = [
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'th', name: 'ไทย', flag: '🇹🇭' }
+    { code: 'en', name: 'English', flagCode: 'US', Flag: US },
+    { code: 'th', name: 'ไทย', flagCode: 'TH', Flag: TH }
   ]
 
   const currentLanguage = languages.find(lang => lang.code === language) || languages[0]
@@ -37,16 +38,19 @@ const LanguageSwitcher = () => {
       {/* Language Switcher Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-solinex-blue focus:ring-opacity-50"
+        className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-solinex-blue/20 border border-transparent hover:border-gray-200"
         aria-label={t('language.switch')}
         aria-expanded={isOpen}
       >
-        <span className="text-lg">{currentLanguage.flag}</span>
-        <span className="text-sm font-medium text-gray-700 hidden sm:block">
+        <currentLanguage.Flag 
+          className="w-5 h-4 rounded-sm"
+          title={currentLanguage.flagCode}
+        />
+        <span className="text-xs font-medium text-gray-600 hidden sm:block leading-none">
           {currentLanguage.name}
         </span>
         <svg
-          className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${
+          className={`w-3 h-3 text-gray-400 transition-transform duration-200 flex-shrink-0 ${
             isOpen ? 'rotate-180' : ''
           }`}
           fill="none"
@@ -59,28 +63,31 @@ const LanguageSwitcher = () => {
 
       {/* Dropdown Menu */}
       <div
-        className={`absolute mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 z-50 transition-all duration-200 ${
+        className={`absolute left-0 mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 z-[60] transition-all duration-200 ${
           isOpen
             ? 'opacity-100 visible transform translate-y-0'
             : 'opacity-0 invisible transform -translate-y-2'
         }`}
       >
-        <div className="py-2">
+        <div className="py-1">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleLanguageChange(lang.code)}
-              className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-gray-50 transition-colors duration-150 ${
+              className={`w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-gray-50 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg ${
                 language === lang.code
-                  ? 'bg-solinex-blue/10 text-solinex-blue'
+                  ? 'bg-solinex-blue/5 text-solinex-blue'
                   : 'text-gray-700'
               }`}
             >
-              <span className="text-lg">{lang.flag}</span>
-              <span className="font-medium">{lang.name}</span>
+               <lang.Flag 
+                 className="w-5 h-4 rounded-sm"
+                 title={lang.flagCode}
+               />
+              <span className="text-sm font-medium leading-none">{lang.name}</span>
               {language === lang.code && (
                 <svg
-                  className="w-4 h-4 ml-auto text-solinex-blue"
+                  className="w-3 h-3 ml-auto text-solinex-blue flex-shrink-0"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
